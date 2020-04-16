@@ -1,0 +1,65 @@
+
+Cuando elijo target me setea:
+   - arch
+   - platform
+
+target (las boards y la PC, bibliotecas de como esta ruteada la placa, bibliotecas de otros chips montados en la placa)
+   edu_ciaa_nxp (depende de armv7m y lpc18xx_43xx)
+   ciaa_nxp
+   pc_sim
+   arduino_mega
+   blue_pill
+      target.mk
+
+arch (startup, core intr)
+   avr
+   mcs51
+   armv6m
+   armv7m
+      freertos_port 
+      arch.mk
+   riscv
+   amd64
+   ia32
+
+platform (mapa de memoria, libreias de la plataforma, vendor intr, modos bajo consumo, config clocks)
+   gigadevice
+      vendor/
+      sapi_port/
+         gpio.c
+         timer_armv7m.c (systick, definido en la arquitectura)
+         timer_riscv.c (htmier, definido en la arquitectura)
+      fatfs_port/
+      platform.mk
+         CSRC += gpio.c
+         CSRC += timer_$(ARCH).c
+   stm32_libopencm3
+   stm32_cubemx_f1
+      vendor/
+         HAL/
+         LL/
+      platform.mk
+      sapi_port
+      fatfs_port
+   stm32_cubemx_f4
+   stm32_cubemx_f7
+   
+   lpc18xx_43xx (lpcopen nxp)
+   lpc54xxx_nxp (lpcopen nxp)
+   lpc54xxx_fsl (lpcopen freescale)
+   atmega
+   attiny
+   win32
+   linux
+
+lib
+   editline
+   sapi (depende de sapi_port)
+      lib.mk
+         sapi_DEPENDS := sapi_port  
+   sapi_abstract_modules (depende de sapi)
+   sapi_external_peripherals (depende de sapi)
+   fatfs (depende de fatfs_port, sapi)
+   freertos (depende de freertos_port)
+   plc (depende de sapi)
+
