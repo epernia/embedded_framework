@@ -1,3 +1,5 @@
+all: .all
+
 ifeq ($(CONFIG_TARGET),)
 $(error Not configured)
 endif
@@ -48,7 +50,7 @@ VPATH:=$(SRCDIR)
 MKDIR:=mkdir -p
 RM:=rm -fr
 
-all: $(ALL_GOALS)
+.all: $(ALL_GOALS)
 	@echo DONE
 
 clean:
@@ -79,13 +81,13 @@ help:
 	@echo DEPS: $(DEPS)
 	@echo VPATH: $(VPATH)
 
-$(CONFIG_BUILDDIR)/obj: $(CONFIG_BUILDDIR)
+$(CONFIG_BUILDDIR)/obj:
 	$(V)$(MKDIR) $@
 
 $(CONFIG_BUILDDIR)/obj/%.o: %.c | $(CONFIG_BUILDDIR)/obj
 	@echo CC $<
-	$(V)$(call build_cc $@ $<)
+	$(V)$(call build_cc)
 
 $(EXEC_GOAL): $(OBJS)
-	@echo LINK $@
-	$(V)$(call do_link $@)
+	@echo LINK $<
+	$(V)$(call do_link)
