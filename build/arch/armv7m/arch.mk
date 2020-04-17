@@ -1,3 +1,5 @@
+PROVIDES+=arch_armv7m
+
 ARCH_FLAGS:=-mcpu=$(CPU) -mthumb
 
 ifeq ($(CONFIG_USE_FPU),y)
