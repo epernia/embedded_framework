@@ -1,3 +1,5 @@
+PROVIDES+=platform_lpc18xx_43xx
+
 DEFINES+=__USE_LPCOPEN
 CPU:=cortex-m4
 ARCH:=armv7m

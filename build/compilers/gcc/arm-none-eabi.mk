@@ -1,3 +1,5 @@
+PROVIDES+=compiler_arm_none_eabi libc_newlib
+
 BIN_GOAL:=$(GOAL_NAME).bin
 HEX_GOAL:=$(GOAL_NAME).hex
 LST_GOAL:=$(GOAL_NAME).lst
