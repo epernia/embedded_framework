@@ -28,13 +28,15 @@ COMPILER_CXXFLAGS:=$(COMPILER_FLAGS)
 COMPILER_ASFLAGS:=$(COMPILER_FLAGS)
 COMPILER_LDFLAGS:=
 
-build_cc = $(CC) $(CFLAGS) -o $@ $<
-build_cxx = $(CXX) $(CXXFLAGS) -o $@ $<
-build_as = $(AS) $(ASMFLAGS) -o $@ $<
+build_cc = $(CC) -x c $(CFLAGS) -o $@ $<
+build_cxx = $(CXX) -x c++ $(CXXFLAGS) -o $@ $<
+build_as = $(AS) -x assembler-with-cpp $(ASMFLAGS) -o $@ $<
 do_link = $(LD) -o $@ $(OBJS) $(LDFLAGS)
 
 GOAL_NAME:=$(addprefix $(CONFIG_BUILDDIR)/, $(CONFIG_APPNAME))
-EXEC_GOAL:=$(GOAL_NAME).$(EXEC_EXTENTION)
+
+EXEC_GOAL:=$(GOAL_NAME)$(EXEC_EXTENTION)
+.exec_goal: $(EXEC_GOAL)
 
 ALL_GOALS+=$(EXEC_GOAL)
 

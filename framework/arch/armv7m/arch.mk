@@ -15,9 +15,9 @@ SOURCES+=$(ARCH_BASE)/cmsis_core/src/armv7m_startup.c
 INCLUDES+=$(ARCH_BASE)/cmsis_core/inc
 
 ARCH_CFLAGS:=$(ARCH_FLAGS)
-ARCH_CXXFLAGS:=$(ARCH_FLAGS)
+ARCH_CXXFLAGS:=$(ARCH_FLAGS) -fno-rtti -fno-exceptions
 ARCH_LDFLAGS:=$(ARCH_FLAGS)
 ARCH_LDFLAGS+=-nostartfiles -Wl,-gc-sections
 
 CROSS:=arm-none-eabi-
-EXEC_EXTENTION:=elf
+EXEC_EXTENTION:=.elf

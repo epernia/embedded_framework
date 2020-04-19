@@ -16,6 +16,7 @@ INCLUDES+=$(PLATFORM_BASE)/lpc_chip_43xx/usbd_rom
 SOURCES+=$(wildcard $(PLATFORM_BASE)/lpc_startup/src/*.c)
 SOURCES+=$(wildcard $(PLATFORM_BASE)/lpc_chip_43xx/src/*.c)
 
+
 ifeq ($(CONFIG_LOAD_INRAM),y)
 LDSCRIPT=flat.ld
 else
@@ -24,23 +25,18 @@ endif
 
 PLATFORM_LDFLAGS+=-L$(PLATFORM_BASE)/lib -T$(LDSCRIPT)
 
-define PLATFORM_HELP_TEXT
-Platform dependet targets
+RUN_GOALS:=.write_flash
 
-  flash   Write in flash the board
-  erase   Clean the board flash
-  run     Execute the program in board
-endef
-export PLATFORM_HELP_TEXT
+OOCD:=openocd
 
-flash: $(EXEC_GOAL)
-	@echo FLASHING
-	@echo TODO...
+.write_flash: .bin_goal
+	@openocd -d0 -f $(PLATFORM_BASE)/lpc4337.cfg \
+		-c "init" \
+		-c "halt 0" \
+		-c "flash write_image erase $(BIN_GOAL) 0x1A000000 bin" \
+		-c "reset run" \
+		-c "shutdown"
 
-erase:
-	@echo ERASING
-	@echo TODO...
+.erase_flash: $(BIN_GOAL)
 
-run: flash
-	@echo RUNNING
-	@echo TODO...
+run_exec=echo "running..."
