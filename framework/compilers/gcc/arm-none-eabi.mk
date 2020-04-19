@@ -6,7 +6,7 @@ LST_GOAL:=$(GOAL_NAME).lst
 
 MAP_NAME:=$(GOAL_NAME).map
 
-COMPILER_LDFLAGS:=-Wl,-Map=$(MAP_NAME) -Wl,--cref
+COMPILER_LDFLAGS:=-Wl,-Map=$(MAP_NAME) -Wl,--cref -Wl,--print-memory-usage
 
 ALL_GOALS+=$(BIN_GOAL) $(HEX_GOAL) $(LST_GOAL)
 
