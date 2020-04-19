@@ -2,7 +2,7 @@ include config.mk
 
 .DEFAULT_GOAL: build
 
-CONFIG_BUILDDIR?=$(CONFIG_APP_DIR)
+CONFIG_BUILDDIR?=$(CONFIG_APP_DIR)/build
 CONFIG_VERBOSE?=n
 
 ifeq ($(CONFIG_TARGET),)
