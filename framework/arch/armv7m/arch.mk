@@ -20,4 +20,4 @@ ARCH_LDFLAGS:=$(ARCH_FLAGS)
 ARCH_LDFLAGS+=-nostartfiles -Wl,-gc-sections
 
 CROSS:=arm-none-eabi-
-EXEC_EXTENTION:=elf
+EXEC_EXTENTION:=.elf

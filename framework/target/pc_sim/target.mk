@@ -1,22 +1,10 @@
-# Compilation and libraries configurations -----------------------------
-
-# Compilation and libraries default values
-
-# Libraries
-#USE_SAPI=y
-
-ARCH = ia32
-PLATFORM =  
-
-# -----------------------
+PROVIDES+=target_pc_sim
 
 ifeq ($(OS),Windows_NT)
-EXTENSION:=.exe
+PLATFORM:=win32
 else
-EXTENSION=
+PLATFORM:=unix
 endif
 
-TARGET_LDFLAGS=
-
-CROSS=
-
+SOURCES+=$(wildcard $(TARGET_BASE)/src/*.c)
+INCLUDES+=$(TARGET_BASE)/inc
