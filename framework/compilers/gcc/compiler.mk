@@ -34,7 +34,9 @@ build_as = $(AS) $(ASMFLAGS) -o $@ $<
 do_link = $(LD) -o $@ $(OBJS) $(LDFLAGS)
 
 GOAL_NAME:=$(addprefix $(CONFIG_BUILDDIR)/, $(CONFIG_APPNAME))
+
 EXEC_GOAL:=$(GOAL_NAME).$(EXEC_EXTENTION)
+.exec_goal: $(EXEC_GOAL)
 
 ALL_GOALS+=$(EXEC_GOAL)
 

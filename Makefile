@@ -57,9 +57,9 @@ VPATH:=$(SRCDIR)
 MKDIR:=mkdir -p
 RM:=rm -fr
 
-build: .all
+build: .all_goals
 
-.all: $(ALL_GOALS)
+.all_goals: $(ALL_GOALS)
 	@echo DONE
 
 clean:
@@ -113,11 +113,12 @@ $(CONFIG_BUILDDIR)/obj/%.o: %.cpp | $(CONFIG_BUILDDIR)/obj
 $(EXEC_GOAL): $(OBJS)
 	@echo LINK $<
 	$(V)$(call do_link)
+.exec_goal: $(EXEC_GOAL)
 
 run: $(RUN_GOALS)
 	@echo RUN
 	$(call run_exec)
 
-debug: $(EXEC_GOAL)
+debug: .exec_goal
 	@echo DEBUG
 	$(V)$(call debug_exec)

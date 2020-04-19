@@ -28,15 +28,14 @@ PLATFORM_LDFLAGS+=-L$(PLATFORM_BASE)/lib -T$(LDSCRIPT)
 RUN_GOALS:=.write_flash
 
 OOCD:=openocd
-OOCD_PARAMS=-d0 -f $(PLATFORM_BASE)/lpc4337.cfg
-OOCD_PARAMS+=-c "init"
-OOCD_PARAMS+=-c "halt 0"
-OOCD_PARAMS+=-c "flash write_image erase $(BIN_GOAL) 0x1A000000 bin"
-OOCD_PARAMS+=-c "reset run"
-OOCD_PARAMS+=-c "shutdown"
-$(info $(EXEC_GOAL) $(BIN_GOAL))
-.write_flash: .all
-	@openocd $(OOCD_PARAMS)
+
+.write_flash: .bin_goal
+	@openocd -d0 -f $(PLATFORM_BASE)/lpc4337.cfg \
+		-c "init" \
+		-c "halt 0" \
+		-c "flash write_image erase $(BIN_GOAL) 0x1A000000 bin" \
+		-c "reset run" \
+		-c "shutdown"
 
 .erase_flash: $(BIN_GOAL)
 

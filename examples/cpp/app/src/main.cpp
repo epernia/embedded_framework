@@ -31,7 +31,7 @@ int main(void)
    SysTick_Config(SystemCoreClock / 1000);
 
    while (1) {
-      Board_LED_Toggle(LED_1);
+      Board_LED_Toggle(LED_2);
       delay(200);
    }
 }
