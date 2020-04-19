@@ -2,6 +2,9 @@ include config.mk
 
 .DEFAULT_GOAL: build
 
+CONFIG_BUILDDIR?=$(CONFIG_APP_DIR)
+CONFIG_VERBOSE?=n
+
 ifeq ($(CONFIG_TARGET),)
 $(error Not configured)
 endif
@@ -23,7 +26,7 @@ include $(PLATFORM_BASE)/platform.mk
 ARCH_BASE:=$(FW_BASE)/arch/$(ARCH)
 include $(ARCH_BASE)/arch.mk
 
-COMPILER_BASE:=$(FW_BASE)/compilers/$(COMPILER)
+COMPILER_BASE:=$(FW_BASE)/compiler/$(COMPILER)
 include $(COMPILER_BASE)/compiler.mk
 
 include $(CONFIG_APP_DIR)/app.mk
@@ -42,12 +45,12 @@ LDFLAGS+=$(ARCH_LDFLAGS) $(PLATFORM_LDFLAGS) $(COMPILER_LDFLAGS)
 CSRC:=$(filter %.c, $(SOURCES))
 CXXSRC:=$(filter %.cpp, $(SOURCES))
 ASMSRC:=$(filter %.s, $(SOURCES))
-ASMSRC2:=$(filter %.S, $(SOURCES))
+ASMSRC2:=$(filter %.asm, $(SOURCES))
 
 OBJECTS:=$(patsubst %.c, %.o, $(CSRC))
 OBJECTS+=$(patsubst %.cpp, %.o, $(CXXSRC))
 OBJECTS+=$(patsubst %.s, %.o, $(ASMSRC))
-OBJECTS+=$(patsubst %.S, %.o, $(ASMSRC2))
+OBJECTS+=$(patsubst %.asm, %.o, $(ASMSRC))
 OBJS:=$(addprefix $(CONFIG_BUILDDIR)/obj/, $(notdir $(OBJECTS)))
 SRCDIR:=$(sort $(dir $(SOURCES)))
 
@@ -56,6 +59,8 @@ VPATH:=$(SRCDIR)
 
 MKDIR:=mkdir -p
 RM:=rm -fr
+
+include _usr/usr.mk
 
 build: .all_goals
 
@@ -109,6 +114,14 @@ $(CONFIG_BUILDDIR)/obj/%.o: %.c | $(CONFIG_BUILDDIR)/obj
 $(CONFIG_BUILDDIR)/obj/%.o: %.cpp | $(CONFIG_BUILDDIR)/obj
 	@echo CXX $<
 	$(V)$(call build_cxx)
+
+$(CONFIG_BUILDDIR)/obj/%.o: %.s | $(CONFIG_BUILDDIR)/obj
+	@echo ASM $<
+	$(V)$(call build_asm)
+
+$(CONFIG_BUILDDIR)/obj/%.o: %.asm | $(CONFIG_BUILDDIR)/obj
+	@echo ASM $<
+	$(V)$(call build_asm)
 
 $(EXEC_GOAL): $(OBJS)
 	@echo LINK $<
