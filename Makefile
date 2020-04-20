@@ -1,4 +1,4 @@
-include config.mk
+include program.mk
 
 .DEFAULT_GOAL: build
 
@@ -87,6 +87,9 @@ info:
 	@echo "$$HELP_TEXT"
 	@echo "$$ARCH_HELP_TEXT"
 	@echo "$$PLATFORM_HELP_TEXT"
+	@echo sAPI library
+	@echo Platform: $(PLATFORM)
+	@echo Target: $(BOARD)
 #
 #provides:
 #	@echo Provides:

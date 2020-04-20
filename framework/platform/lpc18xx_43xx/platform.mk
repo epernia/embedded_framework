@@ -24,19 +24,3 @@ LDSCRIPT=link.ld
 endif
 
 PLATFORM_LDFLAGS+=-L$(PLATFORM_BASE)/lib -T$(LDSCRIPT)
-
-RUN_GOALS:=.write_flash
-
-OOCD:=openocd
-
-.write_flash: .bin_goal
-	@openocd -d0 -f $(PLATFORM_BASE)/lpc4337.cfg \
-		-c "init" \
-		-c "halt 0" \
-		-c "flash write_image erase $(BIN_GOAL) 0x1A000000 bin" \
-		-c "reset run" \
-		-c "shutdown"
-
-.erase_flash: $(BIN_GOAL)
-
-run_exec=echo "running..."
