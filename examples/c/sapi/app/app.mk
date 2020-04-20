@@ -1,3 +1,3 @@
 SOURCES+=$(CONFIG_APP_DIR)/src/main.c
 
-include framework/lib/sapi/lib.mk
+CONFIG_LIBRARIES+=sapi
