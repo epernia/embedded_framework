@@ -17,6 +17,8 @@ endif
 
 FW_BASE:=framework
 
+include $(CONFIG_APP_DIR)/app.mk
+
 TARGET_BASE:=$(FW_BASE)/target/$(CONFIG_TARGET)
 include $(TARGET_BASE)/target.mk
 
@@ -28,8 +30,6 @@ include $(ARCH_BASE)/arch.mk
 
 COMPILER_BASE:=$(FW_BASE)/compiler/$(COMPILER)
 include $(COMPILER_BASE)/compiler.mk
-
-include $(CONFIG_APP_DIR)/app.mk
 
 include _usr/usr.mk
 
