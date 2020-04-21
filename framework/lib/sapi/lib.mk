@@ -9,7 +9,6 @@ CFLAGS+=-DBOARD=$(CONFIG_TARGET)
 
 INCLUDES+=$(SAPI_BASE)/base/inc
 SOURCES+=$(wildcard $(SAPI_BASE)/base/src/*.c)
-SOURCES+=$(wildcard $(SAPI_BASE)/base/src/*.c)
 
 INCLUDES+=$(SAPI_BASE)/soc/core/inc
 SOURCES+=$(wildcard $(SAPI_BASE)/soc/core/src/*.c)

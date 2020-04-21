@@ -1,1 +1,5 @@
+CONFIG_APPNAME:=generic-hello
+
+COMPATIBLE_TARGETS:=pc_sim
+
 SOURCES+=$(CONFIG_APP_DIR)/src/main.c

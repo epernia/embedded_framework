@@ -1,0 +1,16 @@
+PROVIDES+=platform_stm32f1
+
+DEFINES+=USE_HAL_DRIVER $(ST_PART)
+CPU:=cortex-m3
+ARCH:=armv7m
+COMPILER:=gcc
+
+INCLUDES+=$(PLATFORM_BASE)/STM32F1xx_HAL_Driver/Inc
+INCLUDES+=$(PLATFORM_BASE)/Include
+
+SOURCES+=$(filter-out %template.c, $(wildcard $(PLATFORM_BASE)/STM32F1xx_HAL_Driver/Src/*.c))
+SOURCES+=$(PLATFORM_BASE)/system_stm32f1xx.c
+
+LDSCRIPT=$(PLATFORM_BASE)/$(ST_PART)_FLASH.ld
+
+PLATFORM_LDFLAGS+=-L$(PLATFORM_BASE)/lib -T$(LDSCRIPT)

@@ -63,4 +63,4 @@ dkms.conf
 out/
 .build-log
 
-examples/*/*/build/*
+**/build/*

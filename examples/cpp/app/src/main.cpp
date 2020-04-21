@@ -32,7 +32,7 @@ int main(void)
 
    while (1) {
       Board_LED_Toggle(LED_2);
-      delay(200);
+      delay(500);
    }
 }
 
