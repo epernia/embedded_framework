@@ -1,4 +1,2 @@
 #CONFIG_VERBOSE:=y
-
-CONFIG_TARGET:=edu_ciaa_nxp
-CONFIG_APP_DIR:=examples/c/sapi/app
+CONFIG_APP_DIR?=examples/c/app

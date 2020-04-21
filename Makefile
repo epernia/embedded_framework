@@ -5,10 +5,6 @@ include program.mk
 CONFIG_BUILDDIR?=$(CONFIG_APP_DIR)/build
 CONFIG_VERBOSE?=n
 
-ifeq ($(CONFIG_TARGET),)
-$(error Not configured)
-endif
-
 ifeq ($(CONFIG_VERBOSE),y)
 V:=
 else
@@ -17,7 +13,19 @@ endif
 
 FW_BASE:=framework
 
+ifeq ($(CONFIG_APP_DIR),)
+$(error CONFIG_APP_DIR not set)
+endif
+
 include $(CONFIG_APP_DIR)/app.mk
+
+CONFIG_TARGET?=$(firstword $(COMPATIBLE_TARGETS))
+
+ifeq ($(CONFIG_TARGET),)
+$(error CONFIG_TARGET not set)
+endif
+
+$(info Makefile for $(CONFIG_TARGET) into $(CONFIG_APP_DIR))
 
 TARGET_BASE:=$(FW_BASE)/target/$(CONFIG_TARGET)
 include $(TARGET_BASE)/target.mk

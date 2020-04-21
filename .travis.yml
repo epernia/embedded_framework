@@ -26,5 +26,4 @@ jobs:
         - export PATH=$PATH:/opt/gnu-mcu-eclipse/arm-none-eabi-gcc/8.2.1-1.7-20190524-0603/bin
         - arm-none-eabi-gcc --version
       script:
-        # TODO implement test correctly
-        - true
+        - sh framework/ci/run-test.sh
