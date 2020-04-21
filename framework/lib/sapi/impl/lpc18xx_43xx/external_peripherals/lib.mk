@@ -2,9 +2,6 @@ EXTERNAL_PERIPH_BASE=$(SAPI_BASE)/external_peripherals
 
 # Display ---------------------------------------------------------------------
 
-INCLUDES+=$(SAPI_BASE)/base/inc
-SOURCES+=$(wildcard $(SAPI_BASE)/base/src/*.c)
-
 INCLUDES+=$(EXTERNAL_PERIPH_BASE)/display/fonts/inc
 INCLUDES+=$(EXTERNAL_PERIPH_BASE)/display/fonts/greek_chars_5x7/inc
 INCLUDES+=$(EXTERNAL_PERIPH_BASE)/display/fonts/icon_chars_5x7/inc

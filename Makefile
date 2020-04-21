@@ -17,8 +17,6 @@ endif
 
 FW_BASE:=framework
 
-include $(CONFIG_APP_DIR)/app.mk
-
 TARGET_BASE:=$(FW_BASE)/target/$(CONFIG_TARGET)
 include $(TARGET_BASE)/target.mk
 
@@ -30,6 +28,12 @@ include $(ARCH_BASE)/arch.mk
 
 COMPILER_BASE:=$(FW_BASE)/compiler/$(COMPILER)
 include $(COMPILER_BASE)/compiler.mk
+
+include $(CONFIG_APP_DIR)/app.mk
+
+include _usr/usr.mk
+
+include $(foreach l, $(CONFIG_LIBRARIES), $(FW_BASE)/lib/$(l)/lib.mk)
 
 INC_FLAGS:=$(addprefix -I, $(INCLUDES))
 DEF_FLAGS:=$(addprefix -D, $(DEFINES))
@@ -59,8 +63,6 @@ VPATH:=$(SRCDIR)
 
 MKDIR:=mkdir -p
 RM:=rm -fr
-
-include _usr/usr.mk
 
 build: .all_goals
 
