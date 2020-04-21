@@ -1,6 +1,6 @@
-#include "stm32f1xx.h"
+#include <stm32f1xx.h>
 
-volatile int ticks = 0;
+static volatile int ticks = 0;
 
 void SysTick_Handler()
 {
@@ -26,9 +26,9 @@ int main()
 
    for (;;) {
       GPIOC->BSRR = GPIO_BSRR_BS13;   // led on - active low
-      waitTicks(100);
+      waitTicks(500);
       GPIOC->BRR = GPIO_BRR_BR13;   // led off
-      waitTicks(100);
+      waitTicks(500);
    }
 
    return 0;
