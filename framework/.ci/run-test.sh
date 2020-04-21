@@ -1,6 +1,5 @@
 #!/bin/sh
 
-set -x
 set -e
 
 APP_DIR=$(find . -name 'app.mk' -exec dirname '{}' \;)

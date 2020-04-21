@@ -25,6 +25,14 @@ ifeq ($(CONFIG_TARGET),)
 $(error CONFIG_TARGET not set)
 endif
 
+ifeq ($(findstring $(CONFIG_TARGET),$(COMPATIBLE_TARGETS)),)
+ifneq ($(CONFIG_FORCE_TARGET),y)
+$(info CONFIG_TARGET='$(CONFIG_TARGET)' is not in COMPATIBLE_TARGETS='$(COMPATIBLE_TARGETS)')
+$(info If you realy know what you are doing, set CONFIG_FORCE_TARGET to y)
+$(error Terminate with incompatible target)
+endif
+endif
+
 $(info Makefile for $(CONFIG_TARGET) into $(CONFIG_APP_DIR))
 
 TARGET_BASE:=$(FW_BASE)/target/$(CONFIG_TARGET)
