@@ -156,3 +156,7 @@ run: $(RUN_GOALS)
 debug: .exec_goal
 	@echo DEBUG
 	$(V)$(call debug_exec)
+
+select_program:
+	@echo SELECT
+	$(V)$(SHELL) $(FW_BASE)/scripts/select-program.mk
