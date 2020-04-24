@@ -1,7 +1,10 @@
-include program.mk
+-include program.mk
 
 .DEFAULT_GOAL: build
 
+FW_BASE:=framework
+
+CONFIG_APP_DIR?=examples/c/app
 CONFIG_BUILDDIR?=$(CONFIG_APP_DIR)/build
 CONFIG_VERBOSE?=n
 
@@ -11,13 +14,12 @@ else
 V:=@
 endif
 
-FW_BASE:=framework
-
 ifeq ($(CONFIG_APP_DIR),)
 $(error CONFIG_APP_DIR not set)
 endif
 
 include $(CONFIG_APP_DIR)/app.mk
+$(info compatibles ${COMPATIBLE_TARGETS})
 
 CONFIG_TARGET?=$(firstword $(COMPATIBLE_TARGETS))
 
@@ -159,4 +161,4 @@ debug: .exec_goal
 
 select_program:
 	@echo SELECT
-	$(V)$(SHELL) $(FW_BASE)/scripts/select-program.mk
+	$(V)$(SHELL) $(FW_BASE)/scripts/select-program.sh
