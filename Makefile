@@ -14,12 +14,15 @@ else
 V:=@
 endif
 
+ifeq ($(wildcard program.mk),)
+$(info Makefile not configured)
+endif
+
 ifeq ($(CONFIG_APP_DIR),)
 $(error CONFIG_APP_DIR not set)
 endif
 
 include $(CONFIG_APP_DIR)/app.mk
-$(info compatibles ${COMPATIBLE_TARGETS})
 
 CONFIG_TARGET?=$(firstword $(COMPATIBLE_TARGETS))
 
@@ -159,6 +162,12 @@ debug: .exec_goal
 	@echo DEBUG
 	$(V)$(call debug_exec)
 
+ifeq ($(OS),Windows_NT)
+SELECT_PROGRAM_FLAGS:=--force-zenity
+else
+SELECT_PROGRAM_FLAGS:=
+endif
+
 select_program:
 	@echo SELECT
-	$(V)$(SHELL) $(FW_BASE)/scripts/select-program.sh
+	$(V)$(SHELL) $(FW_BASE)/scripts/select-program.sh $(SELECT_PROGRAM_FLAGS)

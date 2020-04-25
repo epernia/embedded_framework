@@ -2,6 +2,8 @@
 
 static void initHardware(void);
 
+static uint32_t cnt = 0;
+
 template<typename T>
 inline T load_volatile(T *addr)
 {
@@ -41,6 +43,3 @@ void SysTick_Handler(void)
    v++;
    store_volatile(&cnt, v);
 }
-
-
-static uint32_t cnt = 0;
