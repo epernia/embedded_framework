@@ -64,3 +64,4 @@ out/
 .build-log
 
 **/build/*
+program.mk

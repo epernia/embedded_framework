@@ -1,7 +1,10 @@
-include program.mk
+-include program.mk
 
 .DEFAULT_GOAL: build
 
+FW_BASE:=framework
+
+CONFIG_APP_DIR?=examples/c/app
 CONFIG_BUILDDIR?=$(CONFIG_APP_DIR)/build
 CONFIG_VERBOSE?=n
 
@@ -11,7 +14,9 @@ else
 V:=@
 endif
 
-FW_BASE:=framework
+ifeq ($(wildcard program.mk),)
+$(info Makefile not configured)
+endif
 
 ifeq ($(CONFIG_APP_DIR),)
 $(error CONFIG_APP_DIR not set)
@@ -156,3 +161,13 @@ run: $(RUN_GOALS)
 debug: .exec_goal
 	@echo DEBUG
 	$(V)$(call debug_exec)
+
+ifeq ($(OS),Windows_NT)
+SELECT_PROGRAM_FLAGS:=--force-zenity
+else
+SELECT_PROGRAM_FLAGS:=
+endif
+
+select_program:
+	@echo SELECT
+	$(V)$(SHELL) $(FW_BASE)/scripts/select-program.sh $(SELECT_PROGRAM_FLAGS)
