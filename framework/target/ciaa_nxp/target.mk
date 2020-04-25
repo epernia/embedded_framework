@@ -1,4 +1,4 @@
-PROVIDES+=target_edu_ciaa_nxp
+PROVIDES+=target_ciaa_nxp
 
 PLATFORM:=lpc18xx_43xx
 

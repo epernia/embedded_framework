@@ -9,6 +9,7 @@ extern int main(void);
 extern void __libc_init_array(void);
 extern void SystemInit(void);
 
+WEAK void targetInit(void);
 extern void _vStackTop(void);
 extern void __valid_user_code_checksum(void);
 
@@ -106,6 +107,7 @@ void Reset_Handler(void) {
 
     __libc_init_array();
     initialise_monitor_handles();
+    targetInit();
     main();
     while (1) {
         __asm__ volatile("wfi");

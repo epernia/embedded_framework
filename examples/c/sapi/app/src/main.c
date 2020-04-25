@@ -2,7 +2,7 @@
 
 int main()
 {
-   boardInit();
+   //boardInit();
    while(true){
       gpioToggle(LED);
       delay(100);

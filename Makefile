@@ -54,7 +54,8 @@ include $(COMPILER_BASE)/compiler.mk
 
 include _usr/usr.mk
 
-include $(foreach l, $(CONFIG_LIBRARIES), $(FW_BASE)/lib/$(l)/lib.mk)
+LIB_BASE=$(FW_BASE)/lib
+include $(foreach l, $(CONFIG_LIBRARIES), $(LIB_BASE)/$(l)/lib.mk)
 
 INC_FLAGS:=$(addprefix -I, $(INCLUDES))
 DEF_FLAGS:=$(addprefix -D, $(DEFINES))
@@ -93,6 +94,7 @@ build: .all_goals
 clean:
 	@echo CLEAN
 	$(V)$(RM) $(CONFIG_BUILDDIR)
+# TODO: add clean_all target
 
 define HELP_TEXT
 Compilation targets

@@ -1,0 +1,826 @@
+{
+   "class": "McuModule",
+   "name": "DATA_TYPES",
+   "description": "Data types library module.",
+   "implementations": {},
+   "tests": {},
+   "version": "1.0.0",
+   "author": "Eric Nicolas Pernia <ericpernia@gmail.com>",
+   "license": "BSD-3-Clause <https://opensource.org/licenses/BSD-3-Clause>",
+   "inherits": null,
+   "dependencies": [
+      {
+         "class": "McuModule",
+         "name": "stdint",
+         "description": null,
+         "implementations": {},
+         "tests": {},
+         "version": null,
+         "author": null,
+         "license": null,
+         "inherits": null,
+         "dependencies": [],
+         "constants": [],
+         "dataTypes": [],
+         "variables": [],
+         "methods": [],
+         "moduleVariables": [],
+         "moduleMethods": []
+      },
+      {
+         "class": "McuModule",
+         "name": "chip",
+         "description": null,
+         "implementations": {},
+         "tests": {},
+         "version": null,
+         "author": null,
+         "license": null,
+         "inherits": null,
+         "dependencies": [],
+         "constants": [],
+         "dataTypes": [],
+         "variables": [],
+         "methods": [],
+         "moduleVariables": [],
+         "moduleMethods": []
+      },
+      {
+         "class": "McuModule",
+         "name": "board",
+         "description": null,
+         "implementations": {},
+         "tests": {},
+         "version": null,
+         "author": null,
+         "license": null,
+         "inherits": null,
+         "dependencies": [],
+         "constants": [],
+         "dataTypes": [],
+         "variables": [],
+         "methods": [],
+         "moduleVariables": [],
+         "moduleMethods": []
+      }
+   ],
+   "constants": [
+      {
+         "class": "McuConstant",
+         "name": "NULL",
+         "description": "Null value.",
+         "implementations": {
+            "c.use": "NULL",
+            "c.declaration": "#ifndef NULL\n#define NULL   0\n#endif\n"
+         },
+         "tests": {},
+         "scope": "public"
+      },
+      {
+         "class": "McuConstant",
+         "name": "FALSE",
+         "description": "Logic state FALSE.",
+         "implementations": {
+            "c.use": "FALSE",
+            "c.declaration": "#ifndef FALSE\n#define FALSE  0\n#endif\n"
+         },
+         "tests": {},
+         "scope": "public"
+      },
+      {
+         "class": "McuConstant",
+         "name": "false",
+         "description": "Logic state false.",
+         "implementations": {
+            "c.use": "false",
+            "c.declaration": "#ifndef false\n#define false  0\n#endif\n"
+         },
+         "tests": {},
+         "scope": "public"
+      },
+      {
+         "class": "McuConstant",
+         "name": "TRUE",
+         "description": "Logic state TRUE.",
+         "implementations": {
+            "c.use": "TRUE",
+            "c.declaration": "#ifndef TRUE\n#define TRUE   (!FALSE)\n#endif\n"
+         },
+         "tests": {},
+         "scope": "public"
+      },
+      {
+         "class": "McuConstant",
+         "name": "true",
+         "description": "Logic state true.",
+         "implementations": {
+            "c.use": "true",
+            "c.declaration": "#ifndef true\n#define true   (!false)\n#endif\n"
+         },
+         "tests": {},
+         "scope": "public"
+      },
+      {
+         "class": "McuConstant",
+         "name": "OFF",
+         "description": "Functional state OFF.",
+         "implementations": {
+            "c.use": "OFF",
+            "c.declaration": "#ifndef OFF\n#define OFF    0\n#endif\n"
+         },
+         "tests": {},
+         "scope": "public"
+      },
+      {
+         "class": "McuConstant",
+         "name": "ON",
+         "description": "Functional state ON.",
+         "implementations": {
+            "c.use": "ON",
+            "c.declaration": "#ifndef ON\n#define ON     (!OFF)\n#endif\n"
+         },
+         "tests": {},
+         "scope": "public"
+      },
+      {
+         "class": "McuConstant",
+         "name": "LOW",
+         "description": "Electrical state LOW.",
+         "implementations": {
+            "c.use": "LOW",
+            "c.declaration": "#ifndef LOW\n#define LOW    0\n#endif\n"
+         },
+         "tests": {},
+         "scope": "public"
+      },
+      {
+         "class": "McuConstant",
+         "name": "HIGH",
+         "description": "Electrical state HIGH.",
+         "implementations": {
+            "c.use": "HIGH",
+            "c.declaration": "#ifndef HIGH\n#define HIGH   (!LOW)\n#endif\n"
+         },
+         "tests": {},
+         "scope": "public"
+      },
+      {
+         "class": "McuConstant",
+         "name": "DISABLE",
+         "description": "Enabeling state DISABLE.",
+         "implementations": {
+            "c.use": "DISABLE",
+            "c.declaration": "#ifndef DISABLE\n#define DISABLE 0\n#endif\n"
+         },
+         "tests": {},
+         "scope": "public"
+      },
+      {
+         "class": "McuConstant",
+         "name": "ENABLE",
+         "description": "Enabeling state ENABLE.",
+         "implementations": {
+            "c.use": "ENABLE",
+            "c.declaration": "#ifndef ENABLE\n#define ENABLE (!DISABLE)\n#endif\n"
+         },
+         "tests": {},
+         "scope": "public"
+      }
+   ],
+   "dataTypes": [
+      {
+         "class": "McuDataType",
+         "name": "void_t",
+         "description": "Data type that represents a void value.",
+         "implementations": {
+            "c.declaration": "typedef void void_t;\n",
+            "c.use": "void_t"
+         },
+         "tests": {},
+         "scope": "public",
+         "baseType": "void"
+      },
+      {
+         "class": "McuDataType",
+         "name": "bool_t",
+         "description": "Data type that represents a boolean value.",
+         "implementations": {
+            "c.declaration": "typedef uint8_t bool_t;\n",
+            "c.use": "bool_t"
+         },
+         "tests": {},
+         "scope": "public",
+         "baseType": "uint8_t"
+      },
+      {
+         "class": "McuDataType",
+         "name": "int_t",
+         "description": "Data type that represents an integer value.",
+         "implementations": {
+            "c.declaration": "typedef int32_t int_t;\n",
+            "c.use": "int_t"
+         },
+         "tests": {},
+         "scope": "public",
+         "baseType": "int32_t"
+      },
+      {
+         "class": "McuDataType",
+         "name": "float_t",
+         "description": "Data type that represents a floating point value.",
+         "implementations": {
+            "c.declaration": "typedef float float_t;\n",
+            "c.use": "float_t"
+         },
+         "tests": {},
+         "scope": "public",
+         "baseType": "float"
+      },
+      {
+         "class": "McuDataType",
+         "name": "float32_t",
+         "description": "Data type that represents a floating point value.",
+         "implementations": {
+            "c.declaration": "typedef float float32_t;\n",
+            "c.use": "float32_t"
+         },
+         "tests": {},
+         "scope": "public",
+         "baseType": "float"
+      },
+      {
+         "class": "McuDataType",
+         "name": "byte_t",
+         "description": "Data type that represents a single unsigned byte value.",
+         "implementations": {
+            "c.declaration": "typedef uint8_t byte_t;\n",
+            "c.use": "byte_t"
+         },
+         "tests": {},
+         "scope": "public",
+         "baseType": "uint8_t"
+      },
+      {
+         "class": "McuDataType",
+         "name": "Callback_t",
+         "description": "Data type that represents an event function callback",
+         "implementations": {
+            "c.declaration": "typedef void (*Callback_t)(void *);\n",
+            "c.use": "Callback_t"
+         },
+         "tests": {},
+         "scope": "public",
+         "baseType": "int32_t"
+      },
+      {
+         "class": "McuDataType",
+         "name": "TimeOfDay_t",
+         "description": "Time of day data type for synchronizing the beginning or end of a control event to an absolute time reference.",
+         "implementations": {
+            "c.declaration": "struct TimeOfDay_vl {\n   uint8_t hour;\n   uint8_t min;\n   uint8_t sec;\n   uint16_t msec;\n};\ntypedef struct TimeOfDay_vl TimeOfDay_t;\n",
+            "c.use": "TimeOfDay_t"
+         },
+         "tests": {},
+         "scope": "public",
+         "baseType": {
+            "class": "McuVariableList",
+            "name": "TimeOfDay_vl",
+            "description": "Time of day Variable List for synchronizing the beginning or end of a control event to an absolute time reference.",
+            "implementations": {
+               "c.declaration": "struct TimeOfDay_vl {\n   uint8_t hour;\n   uint8_t min;\n   uint8_t sec;\n   uint16_t msec;\n};\n",
+               "c.use": "struct TimeOfDay_vl"
+            },
+            "tests": {},
+            "scope": "public",
+            "access": "in",
+            "variables": [
+               {
+                  "class": "McuVariable",
+                  "name": "hour",
+                  "description": "Hours (uint8_t) from 0 to 23.",
+                  "implementations": {
+                     "c.use": "hour",
+                     "c.declaration": "uint8_t hour;\n",
+                     "c.parameter": "uint8_t hour"
+                  },
+                  "tests": {},
+                  "scope": "private",
+                  "access": "in",
+                  "dataType": {
+                     "class": "McuDataType",
+                     "name": "uint8_t",
+                     "description": "Data type that represents a 16 bits integer value.",
+                     "implementations": {
+                        "c.declaration": "typedef unsigned char uint8_t;\n",
+                        "c.use": "uint8_t"
+                     },
+                     "tests": {},
+                     "scope": "public",
+                     "baseType": "unsigned char"
+                  },
+                  "initialValue": null
+               },
+               {
+                  "class": "McuVariable",
+                  "name": "min",
+                  "description": "Minutes (uint8_t) from 0 to 59.",
+                  "implementations": {
+                     "c.use": "min",
+                     "c.declaration": "uint8_t min;\n",
+                     "c.parameter": "uint8_t min"
+                  },
+                  "tests": {},
+                  "scope": "private",
+                  "access": "in",
+                  "dataType": {
+                     "class": "McuDataType",
+                     "name": "uint8_t",
+                     "description": "Data type that represents a 16 bits integer value.",
+                     "implementations": {
+                        "c.declaration": "typedef unsigned char uint8_t;\n",
+                        "c.use": "uint8_t"
+                     },
+                     "tests": {},
+                     "scope": "public",
+                     "baseType": "unsigned char"
+                  },
+                  "initialValue": null
+               },
+               {
+                  "class": "McuVariable",
+                  "name": "sec",
+                  "description": "Seconds (uint8_t) from 0 to 59.",
+                  "implementations": {
+                     "c.use": "sec",
+                     "c.declaration": "uint8_t sec;\n",
+                     "c.parameter": "uint8_t sec"
+                  },
+                  "tests": {},
+                  "scope": "private",
+                  "access": "in",
+                  "dataType": {
+                     "class": "McuDataType",
+                     "name": "uint8_t",
+                     "description": "Data type that represents a 16 bits integer value.",
+                     "implementations": {
+                        "c.declaration": "typedef unsigned char uint8_t;\n",
+                        "c.use": "uint8_t"
+                     },
+                     "tests": {},
+                     "scope": "public",
+                     "baseType": "unsigned char"
+                  },
+                  "initialValue": null
+               },
+               {
+                  "class": "McuVariable",
+                  "name": "msec",
+                  "description": "Millieseconds (uint16_t) from 0 to 999.",
+                  "implementations": {
+                     "c.use": "msec",
+                     "c.declaration": "uint16_t msec;\n",
+                     "c.parameter": "uint16_t msec"
+                  },
+                  "tests": {},
+                  "scope": "private",
+                  "access": "in",
+                  "dataType": {
+                     "class": "McuDataType",
+                     "name": "uint16_t",
+                     "description": "Data type that represents a 16 bits integer value.",
+                     "implementations": {
+                        "c.declaration": "typedef unsigned short int uint16_t;\n",
+                        "c.use": "uint16_t"
+                     },
+                     "tests": {},
+                     "scope": "public",
+                     "baseType": "unsigned short int"
+                  },
+                  "initialValue": null
+               }
+            ],
+            "initialValue": null
+         }
+      },
+      {
+         "class": "McuDataType",
+         "name": "Date_t",
+         "description": "Date data type for synchronizing the beginning or end of a control event to an absolute time reference.",
+         "implementations": {
+            "c.declaration": "struct Date_vl {\n   uint16_t year;\n   uint8_t month;\n   uint8_t mday;\n   uint8_t wday;\n};\ntypedef struct Date_vl Date_t;\n",
+            "c.use": "Date_t"
+         },
+         "tests": {},
+         "scope": "public",
+         "baseType": {
+            "class": "McuVariableList",
+            "name": "Date_vl",
+            "description": "Time of day Variable List for synchronizing the beginning or end of a control event to an absolute time reference.",
+            "implementations": {
+               "c.declaration": "struct Date_vl {\n   uint16_t year;\n   uint8_t month;\n   uint8_t mday;\n   uint8_t wday;\n};\n",
+               "c.use": "struct Date_vl"
+            },
+            "tests": {},
+            "scope": "public",
+            "access": "in",
+            "variables": [
+               {
+                  "class": "McuVariable",
+                  "name": "year",
+                  "description": "Year (uint16_t) from 1 to 4095.",
+                  "implementations": {
+                     "c.use": "year",
+                     "c.declaration": "uint16_t year;\n",
+                     "c.parameter": "uint16_t year"
+                  },
+                  "tests": {},
+                  "scope": "private",
+                  "access": "in",
+                  "dataType": {
+                     "class": "McuDataType",
+                     "name": "uint16_t",
+                     "description": "Data type that represents a 16 bits integer value.",
+                     "implementations": {
+                        "c.declaration": "typedef unsigned short int uint16_t;\n",
+                        "c.use": "uint16_t"
+                     },
+                     "tests": {},
+                     "scope": "public",
+                     "baseType": "unsigned short int"
+                  },
+                  "initialValue": null
+               },
+               {
+                  "class": "McuVariable",
+                  "name": "month",
+                  "description": "Month (uint8_t) from 1 to 12.",
+                  "implementations": {
+                     "c.use": "month",
+                     "c.declaration": "uint8_t month;\n",
+                     "c.parameter": "uint8_t month"
+                  },
+                  "tests": {},
+                  "scope": "private",
+                  "access": "in",
+                  "dataType": {
+                     "class": "McuDataType",
+                     "name": "uint8_t",
+                     "description": "Data type that represents a 16 bits integer value.",
+                     "implementations": {
+                        "c.declaration": "typedef unsigned char uint8_t;\n",
+                        "c.use": "uint8_t"
+                     },
+                     "tests": {},
+                     "scope": "public",
+                     "baseType": "unsigned char"
+                  },
+                  "initialValue": null
+               },
+               {
+                  "class": "McuVariable",
+                  "name": "mday",
+                  "description": "Day of month (uint8_t) from 1 to 31.",
+                  "implementations": {
+                     "c.use": "mday",
+                     "c.declaration": "uint8_t mday;\n",
+                     "c.parameter": "uint8_t mday"
+                  },
+                  "tests": {},
+                  "scope": "private",
+                  "access": "in",
+                  "dataType": {
+                     "class": "McuDataType",
+                     "name": "uint8_t",
+                     "description": "Data type that represents a 16 bits integer value.",
+                     "implementations": {
+                        "c.declaration": "typedef unsigned char uint8_t;\n",
+                        "c.use": "uint8_t"
+                     },
+                     "tests": {},
+                     "scope": "public",
+                     "baseType": "unsigned char"
+                  },
+                  "initialValue": null
+               },
+               {
+                  "class": "McuVariable",
+                  "name": "wday",
+                  "description": "Day of week (uint8_t) from 1 to 7.",
+                  "implementations": {
+                     "c.use": "wday",
+                     "c.declaration": "uint8_t wday;\n",
+                     "c.parameter": "uint8_t wday"
+                  },
+                  "tests": {},
+                  "scope": "private",
+                  "access": "in",
+                  "dataType": {
+                     "class": "McuDataType",
+                     "name": "uint8_t",
+                     "description": "Data type that represents a 16 bits integer value.",
+                     "implementations": {
+                        "c.declaration": "typedef unsigned char uint8_t;\n",
+                        "c.use": "uint8_t"
+                     },
+                     "tests": {},
+                     "scope": "public",
+                     "baseType": "unsigned char"
+                  },
+                  "initialValue": null
+               }
+            ],
+            "initialValue": null
+         }
+      },
+      {
+         "class": "McuDataType",
+         "name": "DateAndTime_t",
+         "description": "Date and Time data type for synchronizing the beginning or end of a control event to an absolute time reference.",
+         "implementations": {
+            "c.declaration": "struct DateAndTime_vl {\n   uint8_t hour;\n   uint8_t min;\n   uint8_t sec;\n   uint16_t msec;\n   uint16_t year;\n   uint8_t month;\n   uint8_t mday;\n   uint8_t wday;\n};\ntypedef struct DateAndTime_vl DateAndTime_t;\n",
+            "c.use": "DateAndTime_t"
+         },
+         "tests": {},
+         "scope": "public",
+         "baseType": {
+            "class": "McuVariableList",
+            "name": "DateAndTime_vl",
+            "description": "Date amd Time of day Variable List for synchronizing the beginning or end of a control event to an absolute time reference.",
+            "implementations": {
+               "c.declaration": "struct DateAndTime_vl {\n   uint8_t hour;\n   uint8_t min;\n   uint8_t sec;\n   uint16_t msec;\n   uint16_t year;\n   uint8_t month;\n   uint8_t mday;\n   uint8_t wday;\n};\n",
+               "c.use": "struct DateAndTime_vl"
+            },
+            "tests": {},
+            "scope": "public",
+            "access": "in",
+            "variables": [
+               {
+                  "class": "McuVariable",
+                  "name": "hour",
+                  "description": "Hours (uint8_t) from 0 to 23.",
+                  "implementations": {
+                     "c.use": "hour",
+                     "c.declaration": "uint8_t hour;\n",
+                     "c.parameter": "uint8_t hour"
+                  },
+                  "tests": {},
+                  "scope": "private",
+                  "access": "in",
+                  "dataType": {
+                     "class": "McuDataType",
+                     "name": "uint8_t",
+                     "description": "Data type that represents a 16 bits integer value.",
+                     "implementations": {
+                        "c.declaration": "typedef unsigned char uint8_t;\n",
+                        "c.use": "uint8_t"
+                     },
+                     "tests": {},
+                     "scope": "public",
+                     "baseType": "unsigned char"
+                  },
+                  "initialValue": null
+               },
+               {
+                  "class": "McuVariable",
+                  "name": "min",
+                  "description": "Minutes (uint8_t) from 0 to 59.",
+                  "implementations": {
+                     "c.use": "min",
+                     "c.declaration": "uint8_t min;\n",
+                     "c.parameter": "uint8_t min"
+                  },
+                  "tests": {},
+                  "scope": "private",
+                  "access": "in",
+                  "dataType": {
+                     "class": "McuDataType",
+                     "name": "uint8_t",
+                     "description": "Data type that represents a 16 bits integer value.",
+                     "implementations": {
+                        "c.declaration": "typedef unsigned char uint8_t;\n",
+                        "c.use": "uint8_t"
+                     },
+                     "tests": {},
+                     "scope": "public",
+                     "baseType": "unsigned char"
+                  },
+                  "initialValue": null
+               },
+               {
+                  "class": "McuVariable",
+                  "name": "sec",
+                  "description": "Seconds (uint8_t) from 0 to 59.",
+                  "implementations": {
+                     "c.use": "sec",
+                     "c.declaration": "uint8_t sec;\n",
+                     "c.parameter": "uint8_t sec"
+                  },
+                  "tests": {},
+                  "scope": "private",
+                  "access": "in",
+                  "dataType": {
+                     "class": "McuDataType",
+                     "name": "uint8_t",
+                     "description": "Data type that represents a 16 bits integer value.",
+                     "implementations": {
+                        "c.declaration": "typedef unsigned char uint8_t;\n",
+                        "c.use": "uint8_t"
+                     },
+                     "tests": {},
+                     "scope": "public",
+                     "baseType": "unsigned char"
+                  },
+                  "initialValue": null
+               },
+               {
+                  "class": "McuVariable",
+                  "name": "msec",
+                  "description": "Millieseconds (uint16_t) from 0 to 999.",
+                  "implementations": {
+                     "c.use": "msec",
+                     "c.declaration": "uint16_t msec;\n",
+                     "c.parameter": "uint16_t msec"
+                  },
+                  "tests": {},
+                  "scope": "private",
+                  "access": "in",
+                  "dataType": {
+                     "class": "McuDataType",
+                     "name": "uint16_t",
+                     "description": "Data type that represents a 16 bits integer value.",
+                     "implementations": {
+                        "c.declaration": "typedef unsigned short int uint16_t;\n",
+                        "c.use": "uint16_t"
+                     },
+                     "tests": {},
+                     "scope": "public",
+                     "baseType": "unsigned short int"
+                  },
+                  "initialValue": null
+               },
+               {
+                  "class": "McuVariable",
+                  "name": "year",
+                  "description": "Year (uint16_t) from 1 to 4095.",
+                  "implementations": {
+                     "c.use": "year",
+                     "c.declaration": "uint16_t year;\n",
+                     "c.parameter": "uint16_t year"
+                  },
+                  "tests": {},
+                  "scope": "private",
+                  "access": "in",
+                  "dataType": {
+                     "class": "McuDataType",
+                     "name": "uint16_t",
+                     "description": "Data type that represents a 16 bits integer value.",
+                     "implementations": {
+                        "c.declaration": "typedef unsigned short int uint16_t;\n",
+                        "c.use": "uint16_t"
+                     },
+                     "tests": {},
+                     "scope": "public",
+                     "baseType": "unsigned short int"
+                  },
+                  "initialValue": null
+               },
+               {
+                  "class": "McuVariable",
+                  "name": "month",
+                  "description": "Month (uint8_t) from 1 to 12.",
+                  "implementations": {
+                     "c.use": "month",
+                     "c.declaration": "uint8_t month;\n",
+                     "c.parameter": "uint8_t month"
+                  },
+                  "tests": {},
+                  "scope": "private",
+                  "access": "in",
+                  "dataType": {
+                     "class": "McuDataType",
+                     "name": "uint8_t",
+                     "description": "Data type that represents a 16 bits integer value.",
+                     "implementations": {
+                        "c.declaration": "typedef unsigned char uint8_t;\n",
+                        "c.use": "uint8_t"
+                     },
+                     "tests": {},
+                     "scope": "public",
+                     "baseType": "unsigned char"
+                  },
+                  "initialValue": null
+               },
+               {
+                  "class": "McuVariable",
+                  "name": "mday",
+                  "description": "Day of month (uint8_t) from 1 to 31.",
+                  "implementations": {
+                     "c.use": "mday",
+                     "c.declaration": "uint8_t mday;\n",
+                     "c.parameter": "uint8_t mday"
+                  },
+                  "tests": {},
+                  "scope": "private",
+                  "access": "in",
+                  "dataType": {
+                     "class": "McuDataType",
+                     "name": "uint8_t",
+                     "description": "Data type that represents a 16 bits integer value.",
+                     "implementations": {
+                        "c.declaration": "typedef unsigned char uint8_t;\n",
+                        "c.use": "uint8_t"
+                     },
+                     "tests": {},
+                     "scope": "public",
+                     "baseType": "unsigned char"
+                  },
+                  "initialValue": null
+               },
+               {
+                  "class": "McuVariable",
+                  "name": "wday",
+                  "description": "Day of week (uint8_t) from 1 to 7.",
+                  "implementations": {
+                     "c.use": "wday",
+                     "c.declaration": "uint8_t wday;\n",
+                     "c.parameter": "uint8_t wday"
+                  },
+                  "tests": {},
+                  "scope": "private",
+                  "access": "in",
+                  "dataType": {
+                     "class": "McuDataType",
+                     "name": "uint8_t",
+                     "description": "Data type that represents a 16 bits integer value.",
+                     "implementations": {
+                        "c.declaration": "typedef unsigned char uint8_t;\n",
+                        "c.use": "uint8_t"
+                     },
+                     "tests": {},
+                     "scope": "public",
+                     "baseType": "unsigned char"
+                  },
+                  "initialValue": null
+               }
+            ],
+            "initialValue": null
+         }
+      }
+   ],
+   "variables": [],
+   "methods": [
+      {
+         "class": "McuMethod",
+         "name": "nullCallback",
+         "description": "Null callback.",
+         "implementations": {
+            "c.implementation": "\nvoid_t nullCallback( void_t* ptr )\n{\n   \n}",
+            "c.declaration": "void_t nullCallback( void_t* ptr );"
+         },
+         "tests": {},
+         "scope": "public",
+         "parameters": [
+            {
+               "class": "McuVariable",
+               "name": "ptr",
+               "description": "Pointer to parameters.",
+               "implementations": {
+                  "c.use": "ptr",
+                  "c.declaration": "void_t ptr;\n",
+                  "c.parameter": "void_t* ptr"
+               },
+               "tests": {},
+               "scope": "parameter",
+               "access": "inOut",
+               "dataType": {
+                  "class": "McuDataType",
+                  "name": "void_t",
+                  "description": "Data type that represents a void value.",
+                  "implementations": {
+                     "c.declaration": "typedef void void_t;\n",
+                     "c.use": "void_t"
+                  },
+                  "tests": {},
+                  "scope": "public",
+                  "baseType": "void"
+               },
+               "initialValue": null
+            }
+         ],
+         "returnType": {
+            "class": "McuDataType",
+            "name": "void_t",
+            "description": "Data type that represents a void value.",
+            "implementations": {
+               "c.declaration": "typedef void void_t;\n",
+               "c.use": "void_t"
+            },
+            "tests": {},
+            "scope": "public",
+            "baseType": "void"
+         }
+      }
+   ],
+   "moduleVariables": [],
+   "moduleMethods": []
+}

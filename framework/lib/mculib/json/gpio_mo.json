@@ -1,0 +1,367 @@
+{
+   "class": "McuModule",
+   "name": "GPIO",
+   "description": "Represent a sigle GPIO port and pin of a SoC.",
+   "implementations": {},
+   "tests": {},
+   "version": "1.0.0",
+   "author": "Eric Nicolas Pernia <ericpernia@gmail.com>",
+   "license": "BSD-3-Clause <https://opensource.org/licenses/BSD-3-Clause>",
+   "inherits": null,
+   "dependencies": [],
+   "constants": [
+      {
+         "class": "McuConstant",
+         "name": "NULL",
+         "description": "Null value.",
+         "implementations": {
+            "c.use": "NULL",
+            "c.declaration": "#ifndef NULL\n#define NULL   0\n#endif\n"
+         },
+         "tests": {},
+         "scope": "public"
+      }
+   ],
+   "dataTypes": [
+      {
+         "class": "McuDataType",
+         "name": "PortValue_t",
+         "description": "GPIO Port value.",
+         "implementations": {
+            "c.declaration": "typedef int32_t PortValue_t;\n",
+            "c.use": "PortValue_t"
+         },
+         "tests": {},
+         "scope": "public",
+         "baseType": "int32_t"
+      },
+      {
+         "class": "McuDataType",
+         "name": "PinMode_t",
+         "description": "Data type for Mode of a single GPIO Pin.",
+         "implementations": {
+            "c.declaration": "enum PinMode_cl {\n   DISABLE = 3,\n   INPUT = 1,\n   OUTPUT = 0,\n   OUTPUT_PP = 0,\n   OUTPUT_PUSHPULL = 0,\n   OUTPUT_OD = 2,\n   OUTPUT_OPEN_DRAIN = 2,\n};\ntypedef enum PinMode_cl PinMode_t;\n",
+            "c.use": "PinMode_t"
+         },
+         "tests": {},
+         "scope": "public",
+         "baseType": {
+            "class": "McuConstantList",
+            "name": "PinMode_cl",
+            "description": "Constant list for Mode of a single GPIO Pin.",
+            "implementations": {
+               "c.declaration": "enum PinMode_cl {\n   DISABLE = 3,\n   INPUT = 1,\n   OUTPUT = 0,\n   OUTPUT_PP = 0,\n   OUTPUT_PUSHPULL = 0,\n   OUTPUT_OD = 2,\n   OUTPUT_OPEN_DRAIN = 2,\n};\n"
+            },
+            "tests": {},
+            "scope": null,
+            "values": {
+               "DISABLE": 3,
+               "INPUT": 1,
+               "OUTPUT": 0,
+               "OUTPUT_PP": 0,
+               "OUTPUT_PUSHPULL": 0,
+               "OUTPUT_OD": 2,
+               "OUTPUT_OPEN_DRAIN": 2
+            }
+         }
+      }
+   ],
+   "variables": [],
+   "methods": [
+      {
+         "class": "McuMethod",
+         "name": "modeGet",
+         "description": "mode getter.",
+         "implementations": {
+            "c.implementation": "\nPinMode_t modeGet( Pin_t pin )\n{\n   \n   return 0;\n}",
+            "c.declaration": "PinMode_t modeGet( Pin_t pin );\n"
+         },
+         "tests": {},
+         "scope": "public",
+         "parameters": [],
+         "returnType": {
+            "class": "McuDataType",
+            "name": "PinMode_t",
+            "description": "Data type for Mode of a single GPIO Pin.",
+            "implementations": {
+               "c.declaration": "enum PinMode_cl {\n   DISABLE = 3,\n   INPUT = 1,\n   OUTPUT = 0,\n   OUTPUT_PP = 0,\n   OUTPUT_PUSHPULL = 0,\n   OUTPUT_OD = 2,\n   OUTPUT_OPEN_DRAIN = 2,\n};\ntypedef enum PinMode_cl PinMode_t;\n",
+               "c.use": "PinMode_t"
+            },
+            "tests": {},
+            "scope": "public",
+            "baseType": {
+               "class": "McuConstantList",
+               "name": "PinMode_cl",
+               "description": "Constant list for Mode of a single GPIO Pin.",
+               "implementations": {
+                  "c.declaration": "enum PinMode_cl {\n   DISABLE = 3,\n   INPUT = 1,\n   OUTPUT = 0,\n   OUTPUT_PP = 0,\n   OUTPUT_PUSHPULL = 0,\n   OUTPUT_OD = 2,\n   OUTPUT_OPEN_DRAIN = 2,\n};\n"
+               },
+               "tests": {},
+               "scope": null,
+               "values": {
+                  "DISABLE": 3,
+                  "INPUT": 1,
+                  "OUTPUT": 0,
+                  "OUTPUT_PP": 0,
+                  "OUTPUT_PUSHPULL": 0,
+                  "OUTPUT_OD": 2,
+                  "OUTPUT_OPEN_DRAIN": 2
+               }
+            }
+         }
+      },
+      {
+         "class": "McuMethod",
+         "name": "modeSet",
+         "description": "mode getter.",
+         "implementations": {
+            "c.implementation": "\nvoid_t modeSet( Pin_t pin, PinMode_t mode )\n{\n   \n}",
+            "c.declaration": "void_t modeSet( Pin_t pin, PinMode_t mode );\n"
+         },
+         "tests": {},
+         "scope": "public",
+         "parameters": [
+            {
+               "class": "McuVariable",
+               "name": "mode",
+               "description": "Variable for mode of a single GPIO Pin.",
+               "implementations": {
+                  "c.use": "mode",
+                  "c.declaration": "PinMode_t mode;\n",
+                  "c.parameter": "PinMode_t mode"
+               },
+               "tests": {},
+               "scope": "public",
+               "access": "in",
+               "dataType": {
+                  "class": "McuDataType",
+                  "name": "PinMode_t",
+                  "description": "Data type for Mode of a single GPIO Pin.",
+                  "implementations": {
+                     "c.declaration": "enum PinMode_cl {\n   DISABLE = 3,\n   INPUT = 1,\n   OUTPUT = 0,\n   OUTPUT_PP = 0,\n   OUTPUT_PUSHPULL = 0,\n   OUTPUT_OD = 2,\n   OUTPUT_OPEN_DRAIN = 2,\n};\ntypedef enum PinMode_cl PinMode_t;\n",
+                     "c.use": "PinMode_t"
+                  },
+                  "tests": {},
+                  "scope": "public",
+                  "baseType": {
+                     "class": "McuConstantList",
+                     "name": "PinMode_cl",
+                     "description": "Constant list for Mode of a single GPIO Pin.",
+                     "implementations": {
+                        "c.declaration": "enum PinMode_cl {\n   DISABLE = 3,\n   INPUT = 1,\n   OUTPUT = 0,\n   OUTPUT_PP = 0,\n   OUTPUT_PUSHPULL = 0,\n   OUTPUT_OD = 2,\n   OUTPUT_OPEN_DRAIN = 2,\n};\n"
+                     },
+                     "tests": {},
+                     "scope": null,
+                     "values": {
+                        "DISABLE": 3,
+                        "INPUT": 1,
+                        "OUTPUT": 0,
+                        "OUTPUT_PP": 0,
+                        "OUTPUT_PUSHPULL": 0,
+                        "OUTPUT_OD": 2,
+                        "OUTPUT_OPEN_DRAIN": 2
+                     }
+                  }
+               },
+               "initialValue": null
+            }
+         ],
+         "returnType": {
+            "class": "McuDataType",
+            "name": "void_t",
+            "description": "Data type that represents a void value.",
+            "implementations": {
+               "c.declaration": "typedef void void_t;\n",
+               "c.use": "void_t"
+            },
+            "tests": {},
+            "scope": "public",
+            "baseType": "void"
+         }
+      },
+      {
+         "class": "McuMethod",
+         "name": "pullGet",
+         "description": "pull getter.",
+         "implementations": {
+            "c.implementation": "\nPinPull_t pullGet( Pin_t pin )\n{\n   \n   return 0;\n}",
+            "c.declaration": "PinPull_t pullGet( Pin_t pin );\n"
+         },
+         "tests": {},
+         "scope": "public",
+         "parameters": [],
+         "returnType": {
+            "class": "McuDataType",
+            "name": "PinPull_t",
+            "description": "Data type for Pull resistor of a single GPIO Pin.",
+            "implementations": {
+               "c.declaration": "enum PinPull_cl {\n   NONE = 0,\n   PULL_UP = 1,\n   PULL_DOWN = 2,\n   PULL_BOTH = 3,\n   PULL_UP_DOWN = 3,\n};\ntypedef enum PinPull_cl PinPull_t;\n",
+               "c.use": "PinPull_t"
+            },
+            "tests": {},
+            "scope": "public",
+            "baseType": {
+               "class": "McuConstantList",
+               "name": "PinPull_cl",
+               "description": "Constant list for Pull resistor of a single GPIO Pin.",
+               "implementations": {
+                  "c.declaration": "enum PinPull_cl {\n   NONE = 0,\n   PULL_UP = 1,\n   PULL_DOWN = 2,\n   PULL_BOTH = 3,\n   PULL_UP_DOWN = 3,\n};\n"
+               },
+               "tests": {},
+               "scope": null,
+               "values": {
+                  "NONE": 0,
+                  "PULL_UP": 1,
+                  "PULL_DOWN": 2,
+                  "PULL_BOTH": 3,
+                  "PULL_UP_DOWN": 3
+               }
+            }
+         }
+      },
+      {
+         "class": "McuMethod",
+         "name": "pullSet",
+         "description": "pull getter.",
+         "implementations": {
+            "c.implementation": "\nvoid_t pullSet( Pin_t pin, PinPull_t pull )\n{\n   \n}",
+            "c.declaration": "void_t pullSet( Pin_t pin, PinPull_t pull );\n"
+         },
+         "tests": {},
+         "scope": "public",
+         "parameters": [
+            {
+               "class": "McuVariable",
+               "name": "pull",
+               "description": "Variable for Pull resistor of a single GPIO Pin.",
+               "implementations": {
+                  "c.use": "pull",
+                  "c.declaration": "PinPull_t pull;\n",
+                  "c.parameter": "PinPull_t pull"
+               },
+               "tests": {},
+               "scope": "public",
+               "access": "in",
+               "dataType": {
+                  "class": "McuDataType",
+                  "name": "PinPull_t",
+                  "description": "Data type for Pull resistor of a single GPIO Pin.",
+                  "implementations": {
+                     "c.declaration": "enum PinPull_cl {\n   NONE = 0,\n   PULL_UP = 1,\n   PULL_DOWN = 2,\n   PULL_BOTH = 3,\n   PULL_UP_DOWN = 3,\n};\ntypedef enum PinPull_cl PinPull_t;\n",
+                     "c.use": "PinPull_t"
+                  },
+                  "tests": {},
+                  "scope": "public",
+                  "baseType": {
+                     "class": "McuConstantList",
+                     "name": "PinPull_cl",
+                     "description": "Constant list for Pull resistor of a single GPIO Pin.",
+                     "implementations": {
+                        "c.declaration": "enum PinPull_cl {\n   NONE = 0,\n   PULL_UP = 1,\n   PULL_DOWN = 2,\n   PULL_BOTH = 3,\n   PULL_UP_DOWN = 3,\n};\n"
+                     },
+                     "tests": {},
+                     "scope": null,
+                     "values": {
+                        "NONE": 0,
+                        "PULL_UP": 1,
+                        "PULL_DOWN": 2,
+                        "PULL_BOTH": 3,
+                        "PULL_UP_DOWN": 3
+                     }
+                  }
+               },
+               "initialValue": null
+            }
+         ],
+         "returnType": {
+            "class": "McuDataType",
+            "name": "void_t",
+            "description": "Data type that represents a void value.",
+            "implementations": {
+               "c.declaration": "typedef void void_t;\n",
+               "c.use": "void_t"
+            },
+            "tests": {},
+            "scope": "public",
+            "baseType": "void"
+         }
+      },
+      {
+         "class": "McuMethod",
+         "name": "valueGet",
+         "description": "value getter.",
+         "implementations": {
+            "c.implementation": "\nbool_t valueGet( Pin_t pin )\n{\n   \n   return 0;\n}",
+            "c.declaration": "bool_t valueGet( Pin_t pin );\n"
+         },
+         "tests": {},
+         "scope": "public",
+         "parameters": [],
+         "returnType": {
+            "class": "McuDataType",
+            "name": "bool_t",
+            "description": "Data type that represents a boolean value.",
+            "implementations": {
+               "c.declaration": "typedef uint8_t bool_t;\n",
+               "c.use": "bool_t"
+            },
+            "tests": {},
+            "scope": "public",
+            "baseType": "uint8_t"
+         }
+      },
+      {
+         "class": "McuMethod",
+         "name": "valueSet",
+         "description": "value getter.",
+         "implementations": {
+            "c.implementation": "\nvoid_t valueSet( Pin_t pin, bool_t value )\n{\n   \n}",
+            "c.declaration": "void_t valueSet( Pin_t pin, bool_t value );\n"
+         },
+         "tests": {},
+         "scope": "public",
+         "parameters": [
+            {
+               "class": "McuVariable",
+               "name": "value",
+               "description": "Variable for a single GPIO Pin state.",
+               "implementations": {
+                  "c.use": "value",
+                  "c.declaration": "bool_t value;\n",
+                  "c.parameter": "bool_t value"
+               },
+               "tests": {},
+               "scope": "public",
+               "access": "in",
+               "dataType": {
+                  "class": "McuDataType",
+                  "name": "bool_t",
+                  "description": "Data type that represents a boolean value.",
+                  "implementations": {
+                     "c.declaration": "typedef uint8_t bool_t;\n",
+                     "c.use": "bool_t"
+                  },
+                  "tests": {},
+                  "scope": "public",
+                  "baseType": "uint8_t"
+               },
+               "initialValue": null
+            }
+         ],
+         "returnType": {
+            "class": "McuDataType",
+            "name": "void_t",
+            "description": "Data type that represents a void value.",
+            "implementations": {
+               "c.declaration": "typedef void void_t;\n",
+               "c.use": "void_t"
+            },
+            "tests": {},
+            "scope": "public",
+            "baseType": "void"
+         }
+      }
+   ],
+   "moduleVariables": [],
+   "moduleMethods": []
+}
