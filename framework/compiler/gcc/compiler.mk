@@ -3,6 +3,7 @@ PROVIDES+=compiler_gcc
 CC:=$(CROSS)gcc
 CXX:=$(CROSS)g++
 LD:=$(CROSS)gcc
+LD_CXX:=$(CROSS)g++
 AS:=$(CROSS)as
 AR:=$(CROSS)ar
 SIZE:=$(CROSS)size
@@ -31,7 +32,7 @@ COMPILER_LDFLAGS:=
 build_cc = $(CC) -x c $(CFLAGS) -o $@ $<
 build_cxx = $(CXX) -x c++ $(CXXFLAGS) -o $@ $<
 build_as = $(AS) -x assembler-with-cpp $(ASMFLAGS) -o $@ $<
-do_link = $(LD) -o $@ $(OBJS) $(LDFLAGS)
+do_link = $(if $(filter %.cpp, $(SOURCES)), $(LD_CXX), $(LD)) -o $@ $(OBJS) $(LDFLAGS)
 
 GOAL_NAME:=$(addprefix $(CONFIG_BUILDDIR)/, $(CONFIG_APPNAME))
 
