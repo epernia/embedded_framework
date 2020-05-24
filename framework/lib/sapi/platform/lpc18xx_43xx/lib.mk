@@ -1,4 +1,6 @@
 # Base
+INCLUDES+=$(SAPI_PLATFORM)/_inc
+
 INCLUDES+=$(SAPI_PLATFORM)/base/inc
 SOURCES+=$(wildcard $(SAPI_PLATFORM)/base/src/*.c)
 

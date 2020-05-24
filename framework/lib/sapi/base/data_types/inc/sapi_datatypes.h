@@ -37,10 +37,8 @@
 
 /*==================[inclusions]=============================================*/
 
-#include "stdint.h"
-#include "chip.h"
-#include "board.h"
-#include "sapi_boards.h"
+#include <stdint.h>
+#include <stdbool.h>
 
 /*==================[c++]====================================================*/
 #ifdef __cplusplus
@@ -74,6 +72,13 @@ extern "C" {
 #define TRUE   (!FALSE)
 #endif
 
+#ifndef false
+#define false  0
+#endif
+#ifndef true
+#define true   (!false)
+#endif
+
 // From: https://es.coursera.org/lecture/embedded-software-hardware/9-register-definition-files-6pqVq
 
 //  __I Defines 'read only' permissions: volatile const
@@ -98,11 +103,11 @@ extern "C" {
 /*==================[typedef]================================================*/
 
 /* Define Boolean Data Type */
-typedef uint8_t bool_t;
+typedef uint8_t bool_t; /// bool
 
 /* Define real Data Types (floating point) */
 typedef float  real32_t;
-//typedef double real64_t; // In LPC4337 float = double (Floating Point single precision, 32 bits)
+typedef double real64_t; // In LPC4337 float = double (Floating Point single precision, 32 bits)
 
 /* Define Tick Data Type */
 typedef uint64_t tick_t;

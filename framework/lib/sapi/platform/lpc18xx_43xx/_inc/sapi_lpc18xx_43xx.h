@@ -32,43 +32,29 @@
 
 /* Date: 2015-09-23 */
 
-#ifndef _SAPI_TICK_H_
-#define _SAPI_TICK_H_
+#ifndef _SAPI_PERIPHERALS_H_
+#define _SAPI_PERIPHERALS_H_
 
 /*==================[inclusions]=============================================*/
 
-#include "sapi_datatypes.h"
+// Peripheral Drivers
+#include <sapi_gpio.h>
+#include <sapi_uart.h>
+#include <sapi_adc.h>
+#include <sapi_i2c.h>
+#include <sapi_spi.h>
+#include <sapi_timer.h>
+
+#include <sapi_dac.h>
+#include <sapi_rtc.h>
+#include <sapi_sct.h>
+#include <sapi_pwm.h>
+#include <sapi_usb_device.h>
 
 /*==================[c++]====================================================*/
 #ifdef __cplusplus
 extern "C" {
 #endif
-
-/*==================[macros]=================================================*/
-
-#define tickConfig tickInit
-
-/*==================[external functions definition]==========================*/
-
-// Tick Initialization and rate configuration from 1 to 50 ms
-bool_t tickInit( tick_t tickRateMSvalue );
-
-// Read Tick Counter
-tick_t tickRead( void );
-
-// Write Tick Counter
-void tickWrite( tick_t ticks );
-
-// Tick interrupt callback
-bool_t tickCallbackSet( callBackFuncPtr_t tickCallback, void* tickCallbackParams );
-
-// Enable or disable the peripheral energy and clock
-void tickPowerSet( bool_t power );
-
-/*==================[ISR external functions declaration]======================*/
-
-// SysTick Timer ISR Handler
-void SysTick_Handler(void);
 
 /*==================[c++]====================================================*/
 #ifdef __cplusplus
@@ -76,4 +62,4 @@ void SysTick_Handler(void);
 #endif
 
 /*==================[end of file]============================================*/
-#endif /* _SAPI_TICK_H_ */
+#endif /* _SAPI_PERIPHERALS_H_ */

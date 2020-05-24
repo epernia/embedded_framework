@@ -1,5 +1,7 @@
 SAPI_MODULES=$(SAPI_ROOT)/modules
 
+INCLUDES+=$(SAPI_MODULES)/_inc
+
 # Button ----------------------------------------------------------------------
 
 INCLUDES+=$(SAPI_MODULES)/button/inc

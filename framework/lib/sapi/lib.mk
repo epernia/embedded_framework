@@ -18,5 +18,8 @@ include $(SAPI_ROOT)/base/lib.mk
 # Independent modules
 include $(SAPI_ROOT)/modules/lib.mk
 
+# Internal peripherals
+include $(SAPI_ROOT)/peripherals/lib.mk
+
 # External Peripherals
 include $(SAPI_ROOT)/external_peripherals/lib.mk

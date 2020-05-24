@@ -1,5 +1,7 @@
 SAPI_BASE=$(SAPI_ROOT)/base
 
+INCLUDES+=$(SAPI_BASE)/_inc
+
 # Convert ---------------------------------------------------------------------
 
 INCLUDES+=$(SAPI_BASE)/convert/inc

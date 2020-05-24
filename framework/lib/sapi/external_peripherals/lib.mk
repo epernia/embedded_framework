@@ -1,8 +1,8 @@
 SAPI_EXT_PERIPH_ROOT=$(SAPI_ROOT)/external_peripherals
 
-# Display ---------------------------------------------------------------------
+INCLUDES+=$(SAPI_EXT_PERIPH_ROOT)/_inc
 
-include
+# Display ---------------------------------------------------------------------
 
 INCLUDES+=$(SAPI_EXT_PERIPH_ROOT)/display/fonts/inc
 INCLUDES+=$(SAPI_EXT_PERIPH_ROOT)/display/fonts/greek_chars_5x7/inc

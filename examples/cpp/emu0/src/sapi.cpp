@@ -1,40 +1,40 @@
-#include <sapi2.h>
+#include <sapi.h>
 #include <stdio.h>
 
 #include <iostream>
 #include <chrono>
 #include <thread>
  
-bool pin[10] = {false};
+bool pin[16] = {false};
 
 
-volatile bool thread1On = true;
+volatile bool tickThreadOn = true;
 
-void thread1()
+void tickThread()
 {
-   while(thread1On) {  
+   while(tickThreadOn) {  
       // gpioToggle(PIN2);
       // delay(500);
    }
 }
 
 
-class dummy{
-   public: dummy(){
-      printf("Inicializacion\n");
+class Sapi{
+   public: Sapi(){
+      printf("Simulation initialized\n");
       fflush(stdout);
-      th1 = std::thread(thread1);    
+      tickThreadObj = std::thread(tickThread);    
    }
-   ~dummy(){
-      thread1On = false;
-      th1.join();
-      printf("Finish\n");
+   ~Sapi(){
+      tickThreadOn = false;
+      tickThreadObj.join();
+      printf("Simulation terminated\n");
       fflush(stdout);
    }
-   std::thread th1;
+   std::thread tickThreadObj;
 };
 
-dummy dummyVar;
+Sapi sapiVar;
 
 
 template<typename T>
