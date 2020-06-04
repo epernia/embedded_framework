@@ -23,12 +23,14 @@ endif
 
 ifeq ($(ENVIROMENT),MINGW)
 $(error FreeRTOS demo for $(PLATFORM) and $(ENVIROMENT) is not implemented yet.)
+$(info Refer to https://freertos.org/FreeRTOS-Windows-Simulator-Emulator-for-Visual-Studio-and-Eclipse-MingW.html )
 SOURCES+=$(wildcard $(FREERTOS_ROOT)/portable/MSVC-MingW/*.c)
 INCLUDES+=$(FREERTOS_ROOT)/portable/MSVC-MingW
 endif
 
 ifeq ($(ENVIROMENT),MYSYS)
 $(error FreeRTOS demo for $(PLATFORM) and $(ENVIROMENT) is not implemented yet.)
+$(info Refer to https://freertos.org/FreeRTOS-Windows-Simulator-Emulator-for-Visual-Studio-and-Eclipse-MingW.html )
 endif
 
 endif
