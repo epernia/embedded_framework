@@ -1,6 +1,6 @@
 # FreeRTOS "blinky"
 
-This example runs to tasks that prints on the console periodic messages.
+This example runs one task with a blinking LED.
 
 It works on these platform/envioroment:
 
