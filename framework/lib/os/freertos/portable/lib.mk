@@ -10,22 +10,25 @@ endif
 ifeq ($(PLATFORM),win32)
 
 ifeq ($(ENVIROMENT),WINDOWS)
-$(info FreeRTOS demo for $(PLATFORM) and $(ENVIROMENT) is not implemented)
+$(info FreeRTOS demo for $(PLATFORM) and $(ENVIROMENT) is not implemented.)
 endif
 
 ifeq ($(ENVIROMENT),CYGWIN)
-SOURCES+=$(wildcard $(FREERTOS_ROOT)/portable/MSVC-MingW/*.c)
-INCLUDES+=$(FREERTOS_ROOT)/portable/MSVC-MingW
-INCLUDES+="/cygdrive/c/Program\ Files\ (x86)/Windows\ Kits/10/Include/10.0.18362.0/um"
+#CYGWIN uses the same posix port
+SOURCES+=$(wildcard $(FREERTOS_ROOT)/portable/$(COMPILER)/posix/*.c)
+INCLUDES+=$(FREERTOS_ROOT)/portable/$(COMPILER)/posix
+CFLAGS += -pthread
+LDFLAGS+= -pthread
 endif
 
 ifeq ($(ENVIROMENT),MINGW)
+$(error FreeRTOS demo for $(PLATFORM) and $(ENVIROMENT) is not implemented yet.)
 SOURCES+=$(wildcard $(FREERTOS_ROOT)/portable/MSVC-MingW/*.c)
 INCLUDES+=$(FREERTOS_ROOT)/portable/MSVC-MingW
 endif
 
 ifeq ($(ENVIROMENT),MYSYS)
-$(info FreeRTOS demo for $(PLATFORM) and $(ENVIROMENT) is not implemented)
+$(error FreeRTOS demo for $(PLATFORM) and $(ENVIROMENT) is not implemented yet.)
 endif
 
 endif
