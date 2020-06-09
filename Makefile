@@ -72,10 +72,12 @@ CSRC:=$(filter %.c, $(SOURCES))
 CXXSRC:=$(filter %.cpp, $(SOURCES))
 ASMSRC:=$(filter %.s, $(SOURCES))
 ASMSRC2:=$(filter %.asm, $(SOURCES))
+ASMSRC3:=$(filter %.S, $(SOURCES))
 
 OBJECTS:=$(patsubst %.c, %.o, $(CSRC))
 OBJECTS+=$(patsubst %.cpp, %.o, $(CXXSRC))
 OBJECTS+=$(patsubst %.s, %.o, $(ASMSRC))
+OBJECTS+=$(patsubst %.S, %.o, $(ASMSRC3))
 OBJECTS+=$(patsubst %.asm, %.o, $(ASMSRC))
 OBJS:=$(addprefix $(CONFIG_BUILDDIR)/obj/, $(notdir $(OBJECTS)))
 SRCDIR:=$(sort $(dir $(SOURCES)))
@@ -148,6 +150,10 @@ $(CONFIG_BUILDDIR)/obj/%.o: %.s | $(CONFIG_BUILDDIR)/obj
 	$(V)$(call build_asm)
 
 $(CONFIG_BUILDDIR)/obj/%.o: %.asm | $(CONFIG_BUILDDIR)/obj
+	@echo ASM $<
+	$(V)$(call build_asm)
+
+$(CONFIG_BUILDDIR)/obj/%.o: %.S | $(CONFIG_BUILDDIR)/obj
 	@echo ASM $<
 	$(V)$(call build_asm)
 
