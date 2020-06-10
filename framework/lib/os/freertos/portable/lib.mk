@@ -28,12 +28,15 @@ SOURCES+=$(wildcard $(FREERTOS_ROOT)/portable/MSVC-MingW/*.c)
 INCLUDES+=$(FREERTOS_ROOT)/portable/MSVC-MingW
 endif
 
-ifeq ($(ENVIROMENT),MYSYS)
-$(error FreeRTOS demo for $(PLATFORM) and $(ENVIROMENT) is not implemented yet.)
-$(info Refer to https://freertos.org/FreeRTOS-Windows-Simulator-Emulator-for-Visual-Studio-and-Eclipse-MingW.html )
+ifeq ($(ENVIROMENT),MSYS)
+#MSYS uses the same posix port
+SOURCES+=$(wildcard $(FREERTOS_ROOT)/portable/$(COMPILER)/posix/*.c)
+INCLUDES+=$(FREERTOS_ROOT)/portable/$(COMPILER)/posix
+CFLAGS += -pthread
+LDFLAGS+= -pthread
 endif
 
-endif
+endif #win32
 
 ifeq ($(PLATFORM),unix)
 SOURCES+=$(wildcard $(FREERTOS_ROOT)/portable/$(COMPILER)/posix/*.c)
