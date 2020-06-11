@@ -14,7 +14,8 @@ GDB:=$(CROSS)gdb
 
 COMPILER_FLAGS:=-c -MMD
 
-
+# option: y|n
+CONFIG_DEBUG?=y
 ifeq ($(CONFIG_DEBUG),y)
 OPT_LEVEL:=g
 COMPILER_FLAGS+=-g3

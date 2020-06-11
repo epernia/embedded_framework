@@ -16,7 +16,8 @@ INCLUDES+=$(PLATFORM_BASE)/lpc_chip_43xx/usbd_rom
 SOURCES+=$(wildcard $(PLATFORM_BASE)/lpc_startup/src/*.c)
 SOURCES+=$(wildcard $(PLATFORM_BASE)/lpc_chip_43xx/src/*.c)
 
-
+# option: y|n
+CONFIG_LOAD_INRAM?=n
 ifeq ($(CONFIG_LOAD_INRAM),y)
 LDSCRIPT=flat.ld
 else

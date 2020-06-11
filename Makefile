@@ -4,8 +4,13 @@
 
 FW_BASE:=framework
 
+# type: string
+CONFIG_APPNAME?=
+# type: path
 CONFIG_APP_DIR?=examples/c/app
+# type: path
 CONFIG_BUILDDIR?=$(CONFIG_APP_DIR)/build
+# option: y|n
 CONFIG_VERBOSE?=n
 
 ifeq ($(CONFIG_VERBOSE),y)
@@ -24,6 +29,7 @@ endif
 
 include $(CONFIG_APP_DIR)/app.mk
 
+# type: targetname
 CONFIG_TARGET?=$(firstword $(COMPATIBLE_TARGETS))
 
 ifeq ($(CONFIG_TARGET),)
@@ -55,6 +61,7 @@ include $(COMPILER_BASE)/compiler.mk
 include _usr/usr.mk
 
 LIB_BASE=$(FW_BASE)/lib
+CONFIG_LIBRARIES?=   # expect: libname
 include $(foreach l, $(CONFIG_LIBRARIES), $(LIB_BASE)/$(l)/lib.mk)
 
 INC_FLAGS:=$(addprefix -I, $(INCLUDES))
