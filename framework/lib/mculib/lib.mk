@@ -11,7 +11,7 @@ SOURCES+=$(wildcard $(SAPI_BASE)/base/src/*.c)
 
 # Target
 
-CFLAGS+=-DBOARD=$(CONFIG_TARGET)
+CFLAGS+=-DBOARD=$(EF_CFG_TARGET)
 
 # Platform
 

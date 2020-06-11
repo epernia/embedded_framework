@@ -5,15 +5,15 @@
 FW_BASE:=framework
 
 # type: string
-CONFIG_APPNAME?=
+EF_CFG_APPNAME?=
 # type: path
-CONFIG_APP_DIR?=examples/c/app
+EF_CFG_APP_DIR?=examples/c/app
 # type: path
-CONFIG_BUILDDIR?=$(CONFIG_APP_DIR)/build
+EF_CFG_BUILDDIR?=$(EF_CFG_APP_DIR)/build
 # option: y|n
-CONFIG_VERBOSE?=n
+EF_CFG_VERBOSE?=n
 
-ifeq ($(CONFIG_VERBOSE),y)
+ifeq ($(EF_CFG_VERBOSE),y)
 V:=
 else
 V:=@
@@ -23,30 +23,30 @@ ifeq ($(wildcard program.mk),)
 $(info Makefile not configured)
 endif
 
-ifeq ($(CONFIG_APP_DIR),)
-$(error CONFIG_APP_DIR not set)
+ifeq ($(EF_CFG_APP_DIR),)
+$(error EF_CFG_APP_DIR not set)
 endif
 
-include $(CONFIG_APP_DIR)/app.mk
+include $(EF_CFG_APP_DIR)/app.mk
 
 # type: targetname
-CONFIG_TARGET?=$(firstword $(COMPATIBLE_TARGETS))
+EF_CFG_TARGET?=$(firstword $(COMPATIBLE_TARGETS))
 
-ifeq ($(CONFIG_TARGET),)
-$(error CONFIG_TARGET not set)
+ifeq ($(EF_CFG_TARGET),)
+$(error EF_CFG_TARGET not set)
 endif
 
-ifeq ($(findstring $(CONFIG_TARGET),$(COMPATIBLE_TARGETS)),)
-ifneq ($(CONFIG_FORCE_TARGET),y)
-$(info CONFIG_TARGET='$(CONFIG_TARGET)' is not in COMPATIBLE_TARGETS='$(COMPATIBLE_TARGETS)')
-$(info If you realy know what you are doing, set CONFIG_FORCE_TARGET to y)
+ifeq ($(findstring $(EF_CFG_TARGET),$(COMPATIBLE_TARGETS)),)
+ifneq ($(EF_CFG_FORCE_TARGET),y)
+$(info EF_CFG_TARGET='$(EF_CFG_TARGET)' is not in COMPATIBLE_TARGETS='$(COMPATIBLE_TARGETS)')
+$(info If you realy know what you are doing, set EF_CFG_FORCE_TARGET to y)
 $(error Terminate with incompatible target)
 endif
 endif
 
-$(info Makefile for $(CONFIG_TARGET) into $(CONFIG_APP_DIR))
+$(info Makefile for $(EF_CFG_TARGET) into $(EF_CFG_APP_DIR))
 
-TARGET_BASE:=$(FW_BASE)/target/$(CONFIG_TARGET)
+TARGET_BASE:=$(FW_BASE)/target/$(EF_CFG_TARGET)
 include $(TARGET_BASE)/target.mk
 
 PLATFORM_BASE:=$(FW_BASE)/platform/$(PLATFORM)
@@ -61,8 +61,8 @@ include $(COMPILER_BASE)/compiler.mk
 include _usr/usr.mk
 
 LIB_BASE=$(FW_BASE)/lib
-CONFIG_LIBRARIES?=   # expect: libname
-include $(foreach l, $(CONFIG_LIBRARIES), $(LIB_BASE)/$(l)/lib.mk)
+EF_CFG_LIBRARIES?=   # expect: libname
+include $(foreach l, $(EF_CFG_LIBRARIES), $(LIB_BASE)/$(l)/lib.mk)
 
 INC_FLAGS:=$(addprefix -I, $(INCLUDES))
 DEF_FLAGS:=$(addprefix -D, $(DEFINES))
@@ -86,7 +86,7 @@ OBJECTS+=$(patsubst %.cpp, %.o, $(CXXSRC))
 OBJECTS+=$(patsubst %.s, %.o, $(ASMSRC))
 OBJECTS+=$(patsubst %.S, %.o, $(ASMSRC3))
 OBJECTS+=$(patsubst %.asm, %.o, $(ASMSRC))
-OBJS:=$(addprefix $(CONFIG_BUILDDIR)/obj/, $(notdir $(OBJECTS)))
+OBJS:=$(addprefix $(EF_CFG_BUILDDIR)/obj/, $(notdir $(OBJECTS)))
 SRCDIR:=$(sort $(dir $(SOURCES)))
 
 DEPS:=$(patsubst %.o, %.d, $(OBJS))
@@ -102,7 +102,7 @@ build: .all_goals
 
 clean:
 	@echo CLEAN
-	$(V)$(RM) $(CONFIG_BUILDDIR)
+	$(V)$(RM) $(EF_CFG_BUILDDIR)
 # TODO: add clean_all target
 
 define HELP_TEXT
@@ -113,7 +113,7 @@ Compilation targets
   build   Alias to all
   debug   Start debugger to the bin goal
   run     Execute bin goal
-  clean   Clear output directory ($(CONFIG_BUILDDIR))
+  clean   Clear output directory ($(EF_CFG_BUILDDIR))
 endef
 export HELP_TEXT
 
@@ -141,26 +141,26 @@ info:
 #	@echo DEPS: $(DEPS)
 #	@echo VPATH: $(VPATH)
 #
-$(CONFIG_BUILDDIR)/obj:
+$(EF_CFG_BUILDDIR)/obj:
 	$(V)$(MKDIR) $@
 
-$(CONFIG_BUILDDIR)/obj/%.o: %.c | $(CONFIG_BUILDDIR)/obj
+$(EF_CFG_BUILDDIR)/obj/%.o: %.c | $(EF_CFG_BUILDDIR)/obj
 	@echo CC $<
 	$(V)$(call build_cc)
 
-$(CONFIG_BUILDDIR)/obj/%.o: %.cpp | $(CONFIG_BUILDDIR)/obj
+$(EF_CFG_BUILDDIR)/obj/%.o: %.cpp | $(EF_CFG_BUILDDIR)/obj
 	@echo CXX $<
 	$(V)$(call build_cxx)
 
-$(CONFIG_BUILDDIR)/obj/%.o: %.s | $(CONFIG_BUILDDIR)/obj
+$(EF_CFG_BUILDDIR)/obj/%.o: %.s | $(EF_CFG_BUILDDIR)/obj
 	@echo ASM $<
 	$(V)$(call build_asm)
 
-$(CONFIG_BUILDDIR)/obj/%.o: %.asm | $(CONFIG_BUILDDIR)/obj
+$(EF_CFG_BUILDDIR)/obj/%.o: %.asm | $(EF_CFG_BUILDDIR)/obj
 	@echo ASM $<
 	$(V)$(call build_asm)
 
-$(CONFIG_BUILDDIR)/obj/%.o: %.S | $(CONFIG_BUILDDIR)/obj
+$(EF_CFG_BUILDDIR)/obj/%.o: %.S | $(EF_CFG_BUILDDIR)/obj
 	@echo ASM $<
 	$(V)$(call build_asm)
 
