@@ -9,3 +9,7 @@ RUN_GOALS:=.run_goal
 .run_goal: .exec_goal
 
 run_exec=$(EXEC_GOAL)
+
+
+$(info compiler: $(COMPILER))
+$(info arquitecture: $(ARCH))

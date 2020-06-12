@@ -1,11 +1,22 @@
 #referencias:
 #port para posix cortesia de https://github.com/michaelbecker/freertos-addons
 
-ifeq ($(PLATFORM),lpc18xx_43xx)
-#no agregue la opcion de FPU, como en fwv3
+ifeq ($(CPU),cortex-m3)
 SOURCES+=$(wildcard $(FREERTOS_ROOT)/portable/$(COMPILER)/ARM_CM3/*.c)
 INCLUDES+=$(FREERTOS_ROOT)/portable/$(COMPILER)/ARM_CM3
 endif
+
+ifeq ($(CPU),cortex-m4)
+ifeq ($(CONFIG_USE_FPU),y)
+SOURCES+=$(wildcard $(FREERTOS_ROOT)/portable/$(COMPILER)/ARM_CM4F/*.c)
+INCLUDES+=$(FREERTOS_ROOT)/portable/$(COMPILER)/ARM_CM4F
+else
+SOURCES+=$(wildcard $(FREERTOS_ROOT)/portable/$(COMPILER)/ARM_CM3/*.c)
+INCLUDES+=$(FREERTOS_ROOT)/portable/$(COMPILER)/ARM_CM3
+endif
+
+endif
+
 
 ifeq ($(PLATFORM),win32)
 
