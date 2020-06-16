@@ -14,8 +14,9 @@ GDB:=$(CROSS)gdb
 
 COMPILER_FLAGS:=-c -MMD
 
-
-ifeq ($(CONFIG_DEBUG),y)
+# option: y|n
+EF_CFG_DEBUG?=y
+ifeq ($(EF_CFG_DEBUG),y)
 OPT_LEVEL:=g
 COMPILER_FLAGS+=-g3
 else
@@ -34,7 +35,7 @@ build_cxx = $(CXX) -x c++ $(CXXFLAGS) -o $@ $<
 build_as = $(AS) -x assembler-with-cpp $(ASMFLAGS) -o $@ $<
 do_link = $(if $(filter %.cpp, $(SOURCES)), $(LD_CXX), $(LD)) -o $@ $(OBJS) $(LDFLAGS)
 
-GOAL_NAME:=$(addprefix $(CONFIG_BUILDDIR)/, $(CONFIG_APPNAME))
+GOAL_NAME:=$(addprefix $(EF_CFG_BUILDDIR)/, $(EF_CFG_APPNAME))
 
 EXEC_GOAL:=$(GOAL_NAME)$(EXEC_EXTENTION)
 .exec_goal: $(EXEC_GOAL)

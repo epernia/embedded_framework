@@ -1,7 +1,7 @@
-CONFIG_APPNAME:=sapi-app-example
+EF_CFG_APPNAME:=sapi-app-example
 
-SOURCES+=$(CONFIG_APP_DIR)/src/main.c
+SOURCES+=$(EF_CFG_APP_DIR)/src/main.c
 
 COMPATIBLE_TARGETS:=edu_ciaa_nxp
 
-CONFIG_LIBRARIES+=sapi
+EF_CFG_LIBRARIES+=sapi

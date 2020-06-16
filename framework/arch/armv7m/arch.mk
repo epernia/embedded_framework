@@ -2,7 +2,10 @@ PROVIDES+=arch_armv7m
 
 ARCH_FLAGS:=-mcpu=$(CPU) -mthumb
 
-ifeq ($(CONFIG_USE_FPU),y)
+# option: y|n
+EF_CFG_USE_FPU?=n
+
+ifeq ($(EF_CFG_USE_FPU),y)
 DEFINES+=__FPU_PRESENT=1U
 ARCH_FLAGS+=-mfloat-abi=hard -mfpu=fpv4-sp-d16
 else

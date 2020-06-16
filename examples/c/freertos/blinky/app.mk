@@ -1,22 +1,22 @@
-CONFIG_APPNAME:=freertos_blinky
+EF_CFG_APPNAME:=freertos_blinky
 
 COMPATIBLE_TARGETS:=edu_ciaa_nxp
 
 #libraries used
-CONFIG_LIBRARIES += os/freertos
-#CONFIG_LIBRARIES += sapi
+EF_CFG_LIBRARIES += os/freertos
+#EF_CFG_LIBRARIES += sapi
 
 #freertos memory management option (default heap1)
 #FREERTOS_HEAP_TYPE := heap_4
 
 #source code
-SOURCES+=$(CONFIG_APP_DIR)/src/main.c
-SOURCES+=$(CONFIG_APP_DIR)/src/hooks.c
+SOURCES+=$(EF_CFG_APP_DIR)/src/main.c
+SOURCES+=$(EF_CFG_APP_DIR)/src/hooks.c
 
 #include paths
-INCLUDES+=$(CONFIG_APP_DIR)/inc
+INCLUDES+=$(EF_CFG_APP_DIR)/inc
 
-#SOURCES+=$(wildcard $(CONFIG_APP_DIR)/src/*.c)
-#SOURCES+=$(wildcard $(CONFIG_APP_DIR)/src/*.cpp)
+#SOURCES+=$(wildcard $(EF_CFG_APP_DIR)/src/*.c)
+#SOURCES+=$(wildcard $(EF_CFG_APP_DIR)/src/*.cpp)
 
 LDFLAGS+=-specs=nano.specs -specs=nosys.specs

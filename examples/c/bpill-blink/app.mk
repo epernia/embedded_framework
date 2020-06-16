@@ -1,5 +1,5 @@
-CONFIG_APPNAME:=bluepill-example
+EF_CFG_APPNAME:=bluepill-example
 
 COMPATIBLE_TARGETS:=bluepill
 
-SOURCES+=$(wildcard $(CONFIG_APP_DIR)/*.c)
+SOURCES+=$(wildcard $(EF_CFG_APP_DIR)/*.c)

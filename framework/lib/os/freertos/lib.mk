@@ -6,7 +6,7 @@ FREERTOS_HEAP_TYPE?= heap_1
 DEFINES+=USE_FREERTOS
 
 # Target
-CFLAGS += -DBOARD=$(CONFIG_TARGET)
+CFLAGS += -DBOARD=$(EF_CFG_TARGET)
 
 # Platform
 include $(FREERTOS_ROOT)/portable/lib.mk
