@@ -1,4 +1,4 @@
-/* Copyright 2017-2018, Eric Pernia
+/* Copyright 2020, Franco Bucafusco
  * All rights reserved.
  *
  * This file is part of sAPI Library.

@@ -19,6 +19,8 @@ ifneq (, $(findstring Linux, $(UNAME_S)))
 ENVIROMENT := Linux
 else ifneq (, $(findstring CYGWIN, $(UNAME_S)))
 ENVIROMENT := CYGWIN
+else ifneq (, $(findstring WINDOWS, $(UNAME_S)))
+ENVIROMENT := MSYS
 else ifneq (, $(findstring MSYS, $(UNAME_S)))
 ENVIROMENT := MSYS
 else ifneq (, $(findstring MINGW, $(UNAME_S)))

@@ -24,3 +24,7 @@ LDSCRIPT=link.ld
 endif
 
 PLATFORM_LDFLAGS+=-L$(PLATFORM_BASE)/lib -T$(LDSCRIPT)
+
+$(info compiler: $(COMPILER))
+$(info arquitecture: $(ARCH))
+$(info cpu: $(CPU))
